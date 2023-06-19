@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main() {
+    int originalNumber, sumDigits;
+    int checkDigit;
+    char originalNumberStr[5], checkDigitStr[2], newNumberStr[6];
+
+    // Step 1: Accept a four-digit number from the user
+    printf("Enter a four-digit number: ");
+    scanf("%d", &originalNumber);
+
+    // Step 2: Calculate the sum of the digits
+    sumDigits = (originalNumber / 1000) + ((originalNumber / 100) % 10) + ((originalNumber / 10) % 10) + (originalNumber % 10);
+
+    // Step 3: Check if the sum of the digits is even or odd
+    if (sumDigits % 2 == 0) {
+        // Step 4: Assign the check digit as 0 if sum is even
+        checkDigit = 0;
+    } else {
+        // Step 4: Assign the check digit as 1 if sum is odd
+        checkDigit = 1;
+    }
+
+    // Step 5: Convert numbers to strings
+    sprintf(originalNumberStr, "%d", originalNumber);
+    sprintf(checkDigitStr, "%d", checkDigit);
+
+    // Step 6: Concatenate strings
+    strcpy(newNumberStr, originalNumberStr);
+    strcat(newNumberStr, checkDigitStr);
+
+    // Step 7: Print the original number and the new number
+    printf("Original Number: %s\n", originalNumberStr);
+    printf("New Number: %s\n", newNumberStr);
+
+    return 0;
+}
